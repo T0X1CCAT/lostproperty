@@ -1,0 +1,19 @@
+{
+  "name": "lostproperty",
+  "version": "1.0.0",
+  "description": "St Ignatius lost property app",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tom Hanel",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "1.13.1",
+    "express": "4.13.0",
+    "jade": "1.1.5"
+  }
+}
