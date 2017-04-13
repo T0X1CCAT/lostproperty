@@ -1,0 +1,17 @@
+{
+  "name": "lostproperty",
+  "description": "St Ignatius lost property app",
+  "main": "index.js",
+  "authors": [
+    "Tom Hanel"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/T0X1CCAT/lostproperty",
+  "private": true,
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "toastr": "^2.1.3",
+    "angular": "^1.6.4",
+    "angular-resource": "^1.6.4"
+  }
+}

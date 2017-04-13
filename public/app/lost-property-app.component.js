@@ -4,7 +4,7 @@
     var module = angular.module("lostProperty");
 
     module.component("lostPropertyApp", {
-        templateUrl:"/js/lost-property-app.component.html",
+        templateUrl:"/app/lost-property-app.component.html",
         $routeConfig: [
             {path:"/find", component:"find", name: "Find"},
             {path:"/about", component:"appAbout", name:"About"},
