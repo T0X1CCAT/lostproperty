@@ -31,7 +31,16 @@ db.once('open', function callback(){
   console.log('lost property db opened');
 });
 
-app.get('*', function(req, res){res.sendFile(rootPath + '/index.html');});
+
+
+app.get('/category', function(req, res){
+  var categories = mongoFunctions.listCategories( db, 
+    function(categories){
+      res.json(categories);
+    });
+  
+  
+});
 
 app.post('/category', (req, res) => {
   console.log('post received');
@@ -39,6 +48,8 @@ app.post('/category', (req, res) => {
   var ok = {status:'ok'};
   res.json(ok);
 })
+
+app.get('*', function(req, res){res.sendFile(rootPath + '/index.html');});
 
 // app.use(function (req,res) { //1
 //     res.render('404', {url:req.url}); //2
