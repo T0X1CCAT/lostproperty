@@ -6,23 +6,30 @@
     module.component("addCategory", {
         templateUrl: "/app/add-category.component.html",
         controllerAs: 'model',
-        controller: function($http){
+        controller: function($http, $rootRouter){
             var model = this;
 
             model.saveCategory = function(){
-                console.log('tom');
-
+            console.log('tom');
+                
                 $http.post(
                     "/category",
                     model
                 ).then(
                     function successCallback(response) {
-                        window.location ="/list"
+                        console.log('response', response.data);
+                        if(response.data.status == 'ok'){
+                            $rootRouter.navigate(['ListCategories']);
+                        }else{
+
+                        }
+                       
                     }, 
                     function errorCallback(response) {
                         // called asynchronously if an error occurs
                         // or server returns response with an error status.
                     });
+                    
             }       
 
         }

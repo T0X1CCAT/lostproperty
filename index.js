@@ -4,6 +4,8 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+
+//start mongo mongod -dbpath d:\\dev\\mongo\\bin\\data\\db
 var mongoFunctions = require('./server/includes/mongo-functions');
 
 //console.log('(__dirname',__dirname);
@@ -43,11 +45,22 @@ app.get('/category', function(req, res){
 });
 
 app.post('/category', (req, res) => {
-  console.log('post received');
-  mongoFunctions.insertCategory(req, res, db);
-  var ok = {status:'ok'};
-  res.json(ok);
-})
+  var ok={status:'ok'}; 
+  
+   mongoFunctions.insertCategory(req, res, db, function(exists){
+    if (exists){
+      ok = {status:'name_exists'};
+      res.json(ok);
+    }else{
+      ok = {status:'ok'};
+      res.json(ok);
+    }
+
+  });
+
+  
+  
+});
 
 app.get('*', function(req, res){res.sendFile(rootPath + '/index.html');});
 
