@@ -9,6 +9,55 @@
         controller: function($http){
             var model = this;
             model.categories = [];
+            model.pageSize = 5;
+            model.currentPage =0;
+            model.categoryPage = [];
+            model.categoryPages = 0;
+
+            model.nextPage = function(){
+                if(model.hasNext()){
+                    var newStartPosition = (model.currentPage+1)*model.pageSize;
+                    var newEndPosition = ((model.currentPage+2)*model.pageSize) > model.categories.length ? model.categories.length : (((model.currentPage+2)*model.pageSize));
+                    model.categoryPage = model.categories.slice(newStartPosition, newEndPosition);
+                    model.currentPage +=1;
+                }    
+            };
+            
+            model.previousPage = function(){
+                if(model.hasPrevious()){
+                    var newStartPosition = null;
+                    var newEndPosition = null;
+                    if(model.currentPage == 1){
+                        newStartPosition = 0;    
+                        newEndPosition = model.currentPage * model.pageSize;
+                    }else{
+                        newStartPosition = (model.currentPage-1)*model.pageSize;
+                        newEndPosition = model.currentPage*model.pageSize;
+                    }
+                    model.categoryPage = model.categories.slice(newStartPosition, newEndPosition);
+                    model.currentPage -=1;
+                }     
+            };
+
+            model.gotoPage = function(pageNumber){
+                var newStartPosition = pageNumber*model.pageSize;
+                var newEndPosition = ((pageNumber+1)*model.pageSize);
+                model.categoryPage = model.categories.slice(newStartPosition, newEndPosition);
+                model.currentPage = pageNumber;
+            
+            };
+            
+            model.hasNext = function(){
+                return  (model.currentPage+1)*model.pageSize < model.categories.length;
+            };
+
+            model.hasPrevious = function(){
+                return  (model.currentPage > 0);
+            };
+
+            model.getCategoryPages = function(){
+                return new Array(model.categoryPages);
+            };
 
             this.$onInit = function () {
                 model.listCategories();
@@ -22,6 +71,8 @@
                     function successCallback(response) {
                         console.log('bla', response);
                         model.categories = response.data;
+                        model.categoryPage = model.categories.slice(0,model.categories.length < model.pageSize ? model.categories.length : model.pageSize);
+                        model.categoryPages = Math.floor(model.categories.length / model.pageSize);
                         
                     }, 
                     function errorCallback(response) {

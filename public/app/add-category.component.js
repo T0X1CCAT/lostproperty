@@ -6,7 +6,7 @@
     module.component("addCategory", {
         templateUrl: "/app/add-category.component.html",
         controllerAs: 'model',
-        controller: function($http, $rootRouter){
+        controller: function($http, $rootRouter, toaster){
             var model = this;
 
             model.saveCategory = function(){
@@ -20,8 +20,10 @@
                         console.log('response', response.data);
                         if(response.data.status == 'ok'){
                             $rootRouter.navigate(['ListCategories']);
-                        }else{
+                            toaster.pop('success', "Result", 'Category Saved.');
 
+                        }else{
+                            toaster.pop('error', "Result", 'Category already exists.');    
                         }
                        
                     }, 
