@@ -13,7 +13,7 @@
     <!-- Bootstrap core CSS -->
     <script src="/vendor/jquery/dist/jquery.js"></script>
 
-    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <link href="/vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="/vendor/AngularJS-Toaster/toaster.css" rel="stylesheet" />
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="/css/ie10-viewport-bug-workaround.css" rel="stylesheet" />
@@ -37,6 +37,7 @@
     <!-- /container -->
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/vendor/jquery/dist/jquery.js"></script>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/vendor/angular/angular.js"></script>
     <script src="/vendor/angular-resource/angular-resource.js"></script>
     <script src="/vendor/angular-messages/angular-messages.js"></script>
@@ -48,9 +49,16 @@
     <script src="/app/lost-property-app.component.js"></script>
     <script src="/app/find.component.js"></script>
     <script src="/app/add.component.js"></script>
+    <script src="/app/home.component.js"></script>
+    <script src="/app/place.component.js"></script>
     <script src="/app/add-category.component.js"></script>
     <script src="/app/list-categories.component.js"></script>
     <script src="/vendor/ie-emulation-modes-warning.js"></script>
+    <script>
+      $(function () {
+        $('[data-toggle="tooltip"]')
+      })
+    </script>  
   </body>
 
 </html>

@@ -1,0 +1,104 @@
+
+<div class="container">
+    
+    <div class="well well-lg">
+        <p>
+             <h3>Create a new lost item</h3>
+        </p>    
+        <form  ng-submit="placeItemForm.$valid && model.saveItem()" class="form-horizontal" novalidate name="placeItemForm">
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="itemName">Item Name</label>
+                    <input type="text" required="" 
+                            name="itemName" 
+                            ng-model="model.itemName" 
+                            class="form-control" 
+                            id="itemName" 
+                            placeholder="Lost Property Name"
+                            required>
+                    <div class="help-block"  
+                        ng-messages="placeItemForm.itemName.$error" 
+                        ng-show="placeItemForm.$submitted || placeItemForm.itemName.$touched">
+                        <p ng-message="required">Item Name is required</p>
+                    </div>    
+                </div>
+            </div>  
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="itemDescription">Item Description</label>
+                    <textarea required="" 
+                            name="itemDescription" 
+                            ng-model="model.itemDescription" 
+                            class="form-control" 
+                            id="itemDescription" 
+                            placeholder="Lost Property Description"
+                            required></textarea>
+                    <div class="help-block"  
+                        ng-messages="placeItemForm.itemDescription.$error" 
+                        ng-show="placeItemForm.$submitted || placeItemForm.itemDescription.$touched">
+                        <p ng-message="required">Item Description is required</p>
+                    </div>    
+                </div>
+            </div>  
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="itemCategory">Item Category</label>
+                    <select required="" 
+                            name="itemCategory" 
+                            ng-model="model.itemCategory" 
+                            class="form-control" 
+                            id="itemCategory" 
+                            ng-options="option.name for option in model.categories track by option.name"
+                            required></select>
+                    <div class="help-block"  
+                        ng-messages="placeItemForm.itemCategory.$error" 
+                        ng-show="placeItemForm.$submitted || placeItemForm.itemCategory.$touched">
+                        <p ng-message="required">Category is required</p>
+                    </div>    
+                </div>
+            </div>  
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="itemLostOrFound">Lost or Found</label>
+                    <select required="" 
+                            name="itemLostOrFound" 
+                            ng-model="model.itemLostOrFound" 
+                            class="form-control" 
+                            id="itemLostOrFound" 
+                            required>
+                         <option value="">Select</option>
+                         <option value="lost">Lost</option>
+                         <option value="lost">Found</option>        
+                    </select>
+                    <div class="help-block"  
+                        ng-messages="placeItemForm.itemLostOrFound.$error" 
+                        ng-show="placeItemForm.$submitted || placeItemForm.itemLostOrFound.$touched">
+                        <p ng-message="required">Lost or Found is required</p>
+                    </div>    
+                </div>
+            </div>  
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="itemLocation">Item Location <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="left" title="Where was the item lost or found?"></span></label>
+                    <input type="text" required="" 
+                            name="itemLocation" 
+                            ng-model="model.itemLocation" 
+                            class="form-control" 
+                            id="itemLocation" 
+                            placeholder="Lost Property Location"
+                            required>
+                    <div class="help-block"  
+                        ng-messages="placeItemForm.itemLocation.$error" 
+                        ng-show="placeItemForm.$submitted || placeItemForm.itemLocation.$touched">
+                        <p ng-message="required">Item Location is required</p>
+                    </div>    
+                </div>
+            </div>
+            <div class="form-group">
+                <div >
+                <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>        
+</div>
