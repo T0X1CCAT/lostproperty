@@ -1,0 +1,62 @@
+html { 
+  background: url(/images/background.jpeg) no-repeat right bottom fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+body{
+    background: transparent;
+    color:white;
+}
+.well{
+    background-color: rgba(34, 34, 34, 0.46);
+}
+.jumbotron{
+    background-color: rgba(34, 34, 34, 0.46);
+    color:white;
+}
+
+.btn-primary{
+    background-color: #484646;
+    
+}
+.btn-primary:hover{
+    background-color: #1b4f67;
+}
+.btn-primary:active{
+    background-color: #1b4f67;
+}
+
+.form-control{
+    background-color: #e6e6e6;
+}
+
+.find-button{
+    margin-top:20px;
+}
+
+@media (min-width: 1200px){
+    .home-title-layout{
+        
+        margin-left:-40px;
+        top: -20px;
+    }    
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    .home-title-layout{
+        top: -20px;
+    }    
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .home-title-layout{
+        top: -20px;
+        margin-left:15px;
+    }    
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .home-image-layout{
+        margin-left:-20px;
+    }    
+}
