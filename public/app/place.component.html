@@ -57,6 +57,36 @@
         </div>  
         <div class="row">
             <div class="form-group col-sm-6">
+                <label for="itemDate">Date Lost/Found</label>
+                <p class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" is-open="model.datePicker.opened" ng-model="model.itemDate" close-text="Close" alt-input-formats="altInputFormats" />
+                    <span class="input-group-btn">
+                        <button type="button" ng-click="model.openDatePicker()" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>    
+                <div class="help-block"  
+                    ng-messages="placeItemForm.itemDate.$error" 
+                    ng-show="placeItemForm.$submitted || placeItemForm.itemDate.$touched">
+                    <p ng-message="required">Date Lost/Found is required</p>
+                </div>    
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <label for="itemDate">Time Lost/Found</label>
+                <p class="input-group">
+                    <div uib-timepicker ng-model="model.itemTime" hour-step="1" minute-step="15" show-meridian="true"></div>
+                    
+                </p>    
+                <div class="help-block"  
+                    ng-messages="placeItemForm.itemCategory.$error" 
+                    ng-show="placeItemForm.$submitted || placeItemForm.itemTime.$touched">
+                    <p ng-message="required">Date Lost/Found is required</p>
+                </div>    
+            </div>
+        </div>  
+        <div class="row">
+            <div class="form-group col-sm-6">
                 <label for="itemLostOrFound">Lost or Found</label>
                 <select required="" 
                         name="itemLostOrFound" 
@@ -66,7 +96,7 @@
                         required>
                         <option value="">Select</option>
                         <option value="lost">Lost</option>
-                        <option value="lost">Found</option>        
+                        <option value="found">Found</option>        
                 </select>
                 <div class="help-block"  
                     ng-messages="placeItemForm.itemLostOrFound.$error" 
@@ -94,7 +124,7 @@
         </div>
         <div class="form-group">
             <div >
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button id="placeSubmit" type="submit" class="btn btn-primary">Save</button>
             </div>
         </div>
     </form>

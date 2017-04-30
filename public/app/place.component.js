@@ -6,11 +6,17 @@
     module.component("place", {
         templateUrl: '/app/place.component.html',
         controllerAs: 'model',
-        controller: function($http){
+        controller: function($http, toaster){
             var model = this;
 
             model.categories = [];
-
+            
+            model.datePicker = {
+                opened: false
+            };    
+            model.openDatePicker = function(){
+                model.datePicker.opened = true;
+            };    
             model.loadCategories = function(){
                  $http.get(
                     "/category"
@@ -26,6 +32,27 @@
                         // or server returns response with an error status.
                     });
             };
+            model.saveItem = function(){
+            console.log('save Item');
+                
+                $http.post(
+                    "/item",
+                    model
+                ).then(
+                    function successCallback(response) {
+                        console.log('response', response.data);
+                        if(response.data.status == 'ok'){
+                            toaster.pop('success', "Result", 'Item Saved.');
+                            angular.element(document.getElementById('placeSubmit')).remove();
+                        }
+                       
+                    }, 
+                    function errorCallback(response) {
+                        // called asynchronously if an error occurs
+                        // or server returns response with an error status.
+                    });
+                    
+            }       
 
             this.$onInit = function () {
                 model.loadCategories();

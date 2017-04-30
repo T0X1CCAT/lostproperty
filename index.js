@@ -62,6 +62,20 @@ app.post('/category', (req, res) => {
   
 });
 
+app.post('/item', (req, res) => {
+  var ok={status:'ok'}; 
+  
+   mongoFunctions.insertItem(req, res, db, function(){
+    
+      ok = {status:'ok'};
+      res.json(ok);
+  
+  });
+
+  
+  
+});
+
 app.get('*', function(req, res){res.sendFile(rootPath + '/index.html');});
 
 // app.use(function (req,res) { //1
