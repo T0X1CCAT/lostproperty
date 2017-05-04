@@ -66,7 +66,7 @@
             model.listCategories = function(){
                 console.log('bla0');
                 $http.get(
-                    "/category"
+                    "/api/category"
                 ).then(
                     function successCallback(response) {
                         console.log('bla', response);

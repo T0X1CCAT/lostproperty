@@ -36,6 +36,9 @@ body{
     margin-top:20px;
 }
 
+.register-button{
+    margin-left:10px;
+}
 @media (min-width: 1200px){
     .home-title-layout{
         

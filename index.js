@@ -3,10 +3,16 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-
+var passport = require('passport');
 
 //start mongo mongod -dbpath d:\\dev\\mongo\\bin\\data\\db
-var mongoFunctions = require('./server/includes/mongo-functions');
+//start server on local win command line MONGO_DB_URL='mongodb://localhost/lostproperty' JWT_SECRET='DHNR65@SH' node index.js
+//var mongoFunctions = require('./server/includes/mongo-functions');
+var routes = require('./server/includes/config/routes');
+
+require('./server/includes/config/passport');
+
+
 
 //console.log('(__dirname',__dirname);
 var rootPath = path.normalize(__dirname + '/public');
@@ -14,7 +20,6 @@ var rootPath = path.normalize(__dirname + '/public');
 var env = process.env.NODE_ENV =process.env.NODE_ENV || 'dev';
 
 var app = express();
-
 
 app.set('port', process.env.PORT || 3000);
 //app.set('views', path.join(__dirname, '/server/views'));
@@ -24,59 +29,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost/lostproperty');
-
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection errro...'));
-
-db.once('open', function callback(){
-  console.log('lost property db opened');
-});
 
 
+app.use(passport.initialize());
 
-app.get('/category', function(req, res){
-  var categories = mongoFunctions.listCategories( db, 
-    function(categories){
-      res.json(categories);
-    });
-  
-  
-});
-
-app.post('/category', (req, res) => {
-  var ok={status:'ok'}; 
-  
-   mongoFunctions.insertCategory(req, res, db, function(exists){
-    if (exists){
-      ok = {status:'name_exists'};
-      res.json(ok);
-    }else{
-      ok = {status:'ok'};
-      res.json(ok);
-    }
-
-  });
-
-  
-  
-});
-
-app.post('/item', (req, res) => {
-  var ok={status:'ok'}; 
-  
-   mongoFunctions.insertItem(req, res, db, function(){
-    
-      ok = {status:'ok'};
-      res.json(ok);
-  
-  });
-
-  
-  
-});
-
-app.get('*', function(req, res){res.sendFile(rootPath + '/index.html');});
+app.use('/', routes);
 
 // app.use(function (req,res) { //1
 //     res.render('404', {url:req.url}); //2

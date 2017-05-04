@@ -12,7 +12,28 @@
             {path:"/list-categories", component:"listCategories", name:"ListCategories"},
             {path:"/add-category", component:"addCategory", name:"AddCategory"},
             {path:"/detail/:id/...", component: "movieDetails", name:"Details"},
+            {path:"/login", component: "login", name:"Login"},
+            {path:"/register", component: "register", name:"Register"},
             {path:"/**", redirectTo: ["Find"]}
-        ]
+        ],
+        controllerAs:"model",
+        controller: function(authentication, $rootRouter){
+            var model = this;
+
+            model.isLoggedIn = function(){
+                if (authentication.isLoggedIn()){
+                    return true;
+                }else{
+                    return false;
+                }
+            };
+            model.getLoggedInUser = function(){
+                return authentication.currentUser();
+            };
+            model.logout = function(){
+                 authentication.logout();
+                 $rootRouter.navigate(['Home']);
+            }
+        }
     });
 }());

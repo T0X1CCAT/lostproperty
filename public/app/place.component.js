@@ -19,7 +19,7 @@
             };    
             model.loadCategories = function(){
                  $http.get(
-                    "/category"
+                    "/api/category"
                 ).then(
                     function successCallback(response) {
                         console.log('bla', response);
@@ -36,7 +36,7 @@
             console.log('save Item');
                 
                 $http.post(
-                    "/item",
+                    "/api/item",
                     model
                 ).then(
                     function successCallback(response) {

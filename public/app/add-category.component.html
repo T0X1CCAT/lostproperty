@@ -1,6 +1,7 @@
-     <p>
+  <div class="well well-lg">
+    <p>
             <h3>Create a new category that lost property items can be saved against</h3>
-        </p>    
+    </p>   
         <form  ng-submit="addCategoryForm.$valid && model.saveCategory()" class="form-horizontal" novalidate name="addCategoryForm">
             <div class="row">
                 <div class="form-group col-sm-6" ng-class="{ 'has-error': (addCategoryForm.categoryName.$touched && addCategoryForm.categoryName.$invalid) || (addCategoryForm.$submitted &&addCategoryForm.categoryName.$invalid)}">
