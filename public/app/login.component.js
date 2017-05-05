@@ -6,7 +6,7 @@
     module.component('login', {
         templateUrl: '/app/login.component.html',
         controllerAs: 'model',
-        controller: function($http, authentication, toaster){
+        controller: function($http, authentication, toaster, $rootRouter){
             var model = this;
 
             model.credentials = {

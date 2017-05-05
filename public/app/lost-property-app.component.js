@@ -14,7 +14,7 @@
             {path:"/detail/:id/...", component: "movieDetails", name:"Details"},
             {path:"/login", component: "login", name:"Login"},
             {path:"/register", component: "register", name:"Register"},
-            {path:"/**", redirectTo: ["Find"]}
+            {path:"/**", redirectTo: ["Home"]}
         ],
         controllerAs:"model",
         controller: function(authentication, $rootRouter){
