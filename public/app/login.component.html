@@ -5,7 +5,7 @@
     </p>   
         <form  ng-submit="loginForm.$valid && model.login()" class="form-horizontal" novalidate name="loginForm">
             <div class="row">
-                <div class="form-group col-sm-6" ng-class="{ 'has-error': (loginForm.email.$touched && loginForm.email.$invalid) || (loginForm.$submitted &&loginForm.email.$invalid)}">
+                <div class="form-group col-sm-6" ng-class="{ 'has-error': loginForm.$submitted &&loginForm.email.$invalid}">
                     <label for="email">Email</label>
                     <input type="text" required="" 
                             name="email" 
@@ -16,13 +16,13 @@
                             required>
                     <div class="help-block"  
                         ng-messages="loginForm.email.$error" 
-                        ng-show="loginForm.$submitted || loginForm.email.$touched">
+                        ng-show="loginForm.$submitted">
                         <p ng-message="required">Email is required</p>
                     </div>    
                 </div>
             </div>
             <div class="row">      
-                <div class="form-group col-sm-6" ng-class="{ 'has-error': (loginForm.password.$touched && loginForm.password.$invalid) || (loginForm.$submitted &&loginForm.password.$invalid)}">
+                <div class="form-group col-sm-6" ng-class="{ 'has-error': loginForm.$submitted &&loginForm.password.$invalid}">
                     <label for="email">Password</label>
                     <input type="password" required="" 
                             name="password" 
@@ -33,7 +33,7 @@
                             required>
                     <div class="help-block"  
                         ng-messages="loginForm.password.$error" 
-                        ng-show="loginForm.$submitted || loginForm.password.$touched">
+                        ng-show="loginForm.$submitted">
                         <p ng-message="required">Password is required</p>
                     </div>    
                 </div>

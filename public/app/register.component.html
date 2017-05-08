@@ -5,7 +5,7 @@
     </p>   
         <form  ng-submit="registerForm.$valid && model.register()" class="form-horizontal" novalidate name="registerForm">
             <div class="row">
-                <div class="form-group col-sm-6" ng-class="{ 'has-error': (registerForm.email.$touched && registerForm.email.$invalid) || (registerForm.$submitted &&registerForm.email.$invalid)}">
+                <div class="form-group col-sm-6" ng-class="{ 'has-error': registerForm.$submitted && registerForm.email.$invalid}">
                     <label for="email">Email</label>
                     <input type="text" required="" 
                             name="email" 
@@ -15,14 +15,14 @@
                             placeholder="Email Address"
                             required>
                     <div class="help-block"  
-                        ng-messages="loginForm.email.$error" 
-                        ng-show="loginForm.$submitted || loginForm.email.$touched">
+                        ng-messages="registerForm.email.$error" 
+                        ng-show="registerForm.$submitted">
                         <p ng-message="required">Email is required</p>
                     </div>    
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-sm-6" ng-class="{ 'has-error': (registerForm.name.$touched && registerForm.name.$invalid) || (registerForm.$submitted &&registerForm.name.$invalid)}">
+                <div class="form-group col-sm-6" ng-class="{ 'has-error': registerForm.$submitted && registerForm.name.$invalid}">
                     <label for="email">Name</label>
                     <input type="text" required="" 
                             name="name" 
@@ -33,13 +33,13 @@
                             required>
                     <div class="help-block"  
                         ng-messages="registerForm.name.$error" 
-                        ng-show="registerForm.$submitted || registerForm.name.$touched">
+                        ng-show="registerForm.$submitted">
                         <p ng-message="required">Name is required</p>
                     </div>    
                 </div>
             </div>            
             <div class="row">      
-                <div class="form-group col-sm-6" ng-class="{ 'has-error': (registerForm.password.$touched && registerForm.password.$invalid) || (registerForm.$submitted &&registerForm.password.$invalid)}">
+                <div class="form-group col-sm-6" ng-class="{ 'has-error': registerForm.$submitted && registerForm.password.$invalid}">
                     <label for="email">Password</label>
                     <input type="password" required="" 
                             name="password" 
@@ -50,7 +50,7 @@
                             required>
                     <div class="help-block"  
                         ng-messages="registerForm.password.$error" 
-                        ng-show="registerForm.$submitted || registerForm.password.$touched">
+                        ng-show="registerForm.$submitted">
                         <p ng-message="required">Password is required</p>
                     </div>    
                 </div>

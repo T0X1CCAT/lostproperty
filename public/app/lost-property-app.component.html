@@ -19,7 +19,7 @@
                   <li ng-if="model.isLoggedIn()"><a ng-link="['AddCategory']">Add Category</a></li>
                   
                 </ul>
-                <p ng-if="model.isLoggedIn()" class="navbar-text navbar-right">{{model.getLoggedInUser().name}}</p>
+                <p ng-if="model.isLoggedIn()" class="navbar-text navbar-right logged-in-name">{{model.getLoggedInUser().name}}</p>
                 <a ng-if="!model.isLoggedIn()" class="btn btn-default navbar-right navbar-btn register-button" ng-link="['Register']" role="button">Register</a>
                 <a ng-if="model.isLoggedIn()" class="btn btn-default navbar-right navbar-btn register-button" ng-click="model.logout()" role="button">Logout</a>
                 <a ng-if="!model.isLoggedIn()" class="btn btn-default navbar-right navbar-btn" ng-link="['Login']" role="button">Sign in</a>
@@ -28,7 +28,7 @@
           </div>
         </div>   
       </nav>  
-      <toaster-container toaster-options="{'close-button':false, 'time-out':{ 'toast-warning': 2000, 'toast-error': 0 } }"></toaster-container>
+      <toaster-container toaster-options="{'close-button':false, 'time-out':{ 'toast-warning': 2000, 'toast-error': 5000, 'toast-success': 5000 } }"></toaster-container>
         <ng-outlet></ng-outlet>
       <!--<div class="jumbotron">
         <h1>Lost Property</h1>

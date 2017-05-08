@@ -1,5 +1,5 @@
 (function(){
-    var module = angular.module("lostProperty",["ngComponentRouter", "toaster",'ui.bootstrap']);
+    var module = angular.module("lostProperty",["ngComponentRouter", "toaster",'ui.bootstrap','ngAnimate','ngMessages']);
 
     module.value("$routerRootComponent", "lostPropertyApp");
 
