@@ -40,7 +40,7 @@
  
             }, 
             function (errorResponse){
-                if (errorResponse.status=='404'){
+                if (errorResponse.status=='401'){
                     return {"errorMessage": "User or Password incorrect"};
                 }else{
                     return {"errorMessage": "System error occured"};

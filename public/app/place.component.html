@@ -16,7 +16,7 @@
                         required>
                 <div class="help-block"  
                     ng-messages="placeItemForm.itemName.$error" 
-                    ng-show="placeItemForm.$submitted || placeItemForm.itemName.$touched">
+                    ng-show="placeItemForm.$submitted">
                     <p ng-message="required">Item Name is required</p>
                 </div>    
             </div>
@@ -33,7 +33,7 @@
                         required></textarea>
                 <div class="help-block"  
                     ng-messages="placeItemForm.itemDescription.$error" 
-                    ng-show="placeItemForm.$submitted || placeItemForm.itemDescription.$touched">
+                    ng-show="placeItemForm.$submitted">
                     <p ng-message="required">Item Description is required</p>
                 </div>    
             </div>
@@ -50,7 +50,7 @@
                         required></select>
                 <div class="help-block"  
                     ng-messages="placeItemForm.itemCategory.$error" 
-                    ng-show="placeItemForm.$submitted || placeItemForm.itemCategory.$touched">
+                    ng-show="placeItemForm.$submitted">
                     <p ng-message="required">Category is required</p>
                 </div>    
             </div>
@@ -66,7 +66,7 @@
                 </p>    
                 <div class="help-block"  
                     ng-messages="placeItemForm.itemDate.$error" 
-                    ng-show="placeItemForm.$submitted || placeItemForm.itemDate.$touched">
+                    ng-show="placeItemForm.$submitted">
                     <p ng-message="required">Date Lost/Found is required</p>
                 </div>    
             </div>
@@ -80,7 +80,7 @@
                 </p>    
                 <div class="help-block"  
                     ng-messages="placeItemForm.itemCategory.$error" 
-                    ng-show="placeItemForm.$submitted || placeItemForm.itemTime.$touched">
+                    ng-show="placeItemForm.$submitted">
                     <p ng-message="required">Date Lost/Found is required</p>
                 </div>    
             </div>
@@ -100,7 +100,7 @@
                 </select>
                 <div class="help-block"  
                     ng-messages="placeItemForm.itemLostOrFound.$error" 
-                    ng-show="placeItemForm.$submitted || placeItemForm.itemLostOrFound.$touched">
+                    ng-show="placeItemForm.$submitted">
                     <p ng-message="required">Lost or Found is required</p>
                 </div>    
             </div>
@@ -117,7 +117,7 @@
                         required>
                 <div class="help-block"  
                     ng-messages="placeItemForm.itemLocation.$error" 
-                    ng-show="placeItemForm.$submitted || placeItemForm.itemLocation.$touched">
+                    ng-show="placeItemForm.$submitted">
                     <p ng-message="required">Item Location is required</p>
                 </div>    
             </div>

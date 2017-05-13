@@ -6,15 +6,20 @@
     module.component("addCategory", {
         templateUrl: "/app/add-category.component.html",
         controllerAs: 'model',
-        controller: function($http, $rootRouter, toaster){
+        controller: ['$http', '$rootRouter', 'toaster', 'authentication', function($http, $rootRouter, toaster, authentication){
             var model = this;
 
             model.saveCategory = function(){
             console.log('tom');
                 
                 $http.post(
-                    "/category",
-                    model
+                    "/api/category",
+                    model,
+                    {
+                        headers: {
+                            Authorization: 'Bearer '+ authentication.getToken()
+                        }
+                    }
                 ).then(
                     function successCallback(response) {
                         console.log('response', response.data);
@@ -34,6 +39,6 @@
                     
             }       
 
-        }
+        }]
     });
 }());

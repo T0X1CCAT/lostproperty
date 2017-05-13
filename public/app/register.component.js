@@ -1,12 +1,11 @@
 (function(){
     "use strict";
-
     var module = angular.module("lostProperty");
 
     module.component('register', {
         templateUrl: '/app/register.component.html',
         controllerAs: 'model',
-        controller: function($http, authentication,$rootRouter, toaster){
+        controller: ['$http', 'authentication', '$rootRouter', 'toaster', function($http, authentication,$rootRouter, toaster){
             var model = this;
             
             model.register = function($http){
@@ -28,7 +27,7 @@
                     });
             }
      
-        }
+        }]
 
     });
 }());

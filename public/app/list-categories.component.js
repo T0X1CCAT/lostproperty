@@ -1,12 +1,12 @@
 (function(){
-    "use strict";
 
+    "use strict";
     var module = angular.module("lostProperty");
 
     module.component('listCategories', {
         templateUrl: '/app/list-categories.component.html',
         controllerAs: 'model',
-        controller: function($http){
+        controller: ['$http', 'authentication', function($http, authentication){
             var model = this;
             model.categories = [];
             model.pageSize = 5;
@@ -66,7 +66,11 @@
             model.listCategories = function(){
                 console.log('bla0');
                 $http.get(
-                    "/api/category"
+                    "/api/category",{
+                        headers: {
+                            Authorization: 'Bearer '+ authentication.getToken()
+                        }
+                    }
                 ).then(
                     function successCallback(response) {
                         console.log('bla', response);
@@ -81,7 +85,7 @@
                         // or server returns response with an error status.
                     });
             }
-        }
+        }]
 
     });
 }());

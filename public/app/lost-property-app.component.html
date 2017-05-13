@@ -14,9 +14,9 @@
                 <ul class="nav navbar-nav">
                   <li><a ng-link="['Home']">Home</a></li>
                   <li><a ng-link="['Find']">Find</a></li>
-                  <li ng-if="model.isLoggedIn()"><a ng-link="['Place']">Place</a></li>
-                  <li ng-if="model.isLoggedIn()"><a ng-link="['ListCategories']">List Categories</a></li>
-                  <li ng-if="model.isLoggedIn()"><a ng-link="['AddCategory']">Add Category</a></li>
+                  <li ng-if="model.isLoggedIn()" class="menu-item"><a ng-link="['Place']">Place</a></li>
+                  <li ng-if="model.isLoggedIn()" class="menu-item"><a ng-link="['ListCategories']">List Categories</a></li>
+                  <li ng-if="model.isLoggedIn()" class="menu-item"><a ng-link="['AddCategory']">Add Category</a></li>
                   
                 </ul>
                 <p ng-if="model.isLoggedIn()" class="navbar-text navbar-right logged-in-name">{{model.getLoggedInUser().name}}</p>

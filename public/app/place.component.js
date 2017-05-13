@@ -1,12 +1,11 @@
 (function(){
-
     "use strict";
 
     var module = angular.module('lostProperty');
     module.component("place", {
         templateUrl: '/app/place.component.html',
         controllerAs: 'model',
-        controller: function($http, toaster){
+        controller: ['$http','toaster','authentication', function($http, toaster, authentication){
             var model = this;
 
             model.categories = [];
@@ -19,7 +18,11 @@
             };    
             model.loadCategories = function(){
                  $http.get(
-                    "/api/category"
+                    "/api/category",{
+                        headers: {
+                            Authorization: 'Bearer '+ authentication.getToken()
+                        }
+                    }    
                 ).then(
                     function successCallback(response) {
                         console.log('bla', response);
@@ -36,8 +39,12 @@
             console.log('save Item');
                 
                 $http.post(
-                    "/api/item",
-                    model
+                    "/api/place",
+                    model,{
+                        headers: {
+                            Authorization: 'Bearer '+ authentication.getToken()
+                        }
+                    }
                 ).then(
                     function successCallback(response) {
                         console.log('response', response.data);
@@ -58,7 +65,7 @@
                 model.loadCategories();
             };
 
-        }
+        }]
     });
 
 }());

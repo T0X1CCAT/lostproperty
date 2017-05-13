@@ -1,12 +1,11 @@
 (function(){
     "use strict";
-
     var module = angular.module("lostProperty");
 
     module.component('login', {
         templateUrl: '/app/login.component.html',
         controllerAs: 'model',
-        controller: function($http, authentication, toaster, $rootRouter){
+        controller: ['$http', 'authentication', 'toaster', '$rootRouter', function($http, authentication, toaster, $rootRouter){
             var model = this;
 
             model.credentials = {
@@ -31,7 +30,7 @@
                 });
             };
      
-        }
+        }]
 
     });
 }());

@@ -1,6 +1,5 @@
 (function(){
     "use strict";
-
     var module = angular.module("lostProperty");
 
     module.component("lostPropertyApp", {
@@ -17,7 +16,7 @@
             {path:"/**", redirectTo: ["Home"]}
         ],
         controllerAs:"model",
-        controller: function(authentication, $rootRouter){
+        controller: ['authentication', '$rootRouter', function(authentication, $rootRouter){
             var model = this;
 
             model.isLoggedIn = function(){
@@ -34,6 +33,6 @@
                  authentication.logout();
                  $rootRouter.navigate(['Home']);
             }
-        }
+        }]
     });
 }());
