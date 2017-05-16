@@ -7,8 +7,6 @@ var passport = require('passport');
 
 mongoose.Promise = global.Promise;
 
-//start mongo mongod -dbpath d:\\dev\\mongo\\bin\\data\\db
-//start server on local win command line MONGO_DB_URL='mongodb://localhost/lostproperty' JWT_SECRET='DHNR65@SH' node index.js
 //var mongoFunctions = require('./server/includes/mongo-functions');
 var routes = require('./server/includes/config/routes');
 
