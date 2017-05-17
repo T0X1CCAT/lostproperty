@@ -32,6 +32,14 @@
             model.logout = function(){
                  authentication.logout();
                  $rootRouter.navigate(['Home']);
+            };
+            model.isAdminUser = function(){
+                var loggedInUser = this.getLoggedInUser();
+                if(loggedInUser != null && loggedInUser.admin ==true){
+                    return true;
+                }else{
+                    return false;
+                }
             }
         }]
     });
