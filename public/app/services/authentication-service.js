@@ -8,11 +8,12 @@
   function authentication ($http, $window) {
 
     var saveToken = function (token) {
-      $window.localStorage['lostproperty-token'] = token;
+
+      $window.localStorage.setItem('lostproperty-token',token);
     };
 
     var getToken = function () {
-      return $window.localStorage['lostproperty-token'];
+      return $window.localStorage.getItem('lostproperty-token');
     };
 
     var logout = function() {
@@ -57,7 +58,7 @@
             payload = token.split('.')[1];
             payload = $window.atob(payload);
             payload = JSON.parse(payload);
-
+            console.log('payload', payload);
             return payload.exp > Date.now() / 1000;
         } else {
             return false;

@@ -3,6 +3,10 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
   uglify: {
+    // options: {
+    //   mangle: false,
+    //   beautify: true
+    // },
     static_mappings: {
       // Because these src-dest file mappings are manually specified, every
       // time a new file is added or removed, the Gruntfile has to be updated.
