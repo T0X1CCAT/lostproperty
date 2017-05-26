@@ -35,44 +35,44 @@ describe('authentication tests', function() {
     expect(auth).toBeDefined();
   });
 
-  it('should on register save token to local storage', function(){
-  	auth.register(credentials);
-  	httpBackend.flush();
-  	expect($window.localStorage.setItem).toHaveBeenCalledWith('lostproperty-token',jwt_toekn);
+ //  it('should on register save token to local storage', function(){
+ //  	auth.register(credentials);
+ //  	httpBackend.flush();
+ //  	expect($window.localStorage.setItem).toHaveBeenCalledWith('lostproperty-token',jwt_toekn);
 
 
-  });
+ //  });
 
-  it('should on login save token to local storage', function(){
-  	httpBackend.when('POST', '/api/login', credentials)
-                            .respond({token: jwt_toekn});
-  	auth.login(credentials);
-  	httpBackend.flush();
-  	expect($window.localStorage.setItem).toHaveBeenCalledWith('lostproperty-token',jwt_toekn);
-
-
-  });
-
-   it('should return error message when incorrect credentials supplied to login', function(){
-	httpBackend.expectPOST('/api/login').respond(401, {});
-
-  	var response = auth.login(credentials);
-  	httpBackend.flush();
-
-  	expect(response.$$state.value.errorMessage).toBe("User or Password incorrect");
+ //  it('should on login save token to local storage', function(){
+ //  	httpBackend.when('POST', '/api/login', credentials)
+ //                            .respond({token: jwt_toekn});
+ //  	auth.login(credentials);
+ //  	httpBackend.flush();
+ //  	expect($window.localStorage.setItem).toHaveBeenCalledWith('lostproperty-token',jwt_toekn);
 
 
-  });
+ //  });
 
-  it('logout should remove localstorage token', function(){
-  	httpBackend.when('POST', '/api/login', credentials)
-                            .respond({token: jwt_toekn});
-  	auth.login(credentials);
-  	httpBackend.flush();
+ //   it('should return error message when incorrect credentials supplied to login', function(){
+	// httpBackend.expectPOST('/api/login').respond(401, {});
 
-  	auth.logout();
-	expect($window.localStorage.removeItem).toHaveBeenCalledWith('lostproperty-token');
-  });		
+ //  	var response = auth.login(credentials);
+ //  	httpBackend.flush();
+
+ //  	expect(response.$$state.value.errorMessage).toBe("User or Password incorrect");
+
+
+ //  });
+
+ //  it('logout should remove localstorage token', function(){
+ //  	httpBackend.when('POST', '/api/login', credentials)
+ //                            .respond({token: jwt_toekn});
+ //  	auth.login(credentials);
+ //  	httpBackend.flush();
+
+ //  	auth.logout();
+	// expect($window.localStorage.removeItem).toHaveBeenCalledWith('lostproperty-token');
+ //  });		
 
   // it('currentUser should return the current user', function(){
   // 	httpBackend.when('POST', '/api/login', credentials)
