@@ -64,7 +64,6 @@
             };
             
             model.listCategories = function(){
-                console.log('bla0');
                 $http.get(
                     "/api/category",{
                         headers: {
@@ -73,14 +72,12 @@
                     }
                 ).then(
                     function successCallback(response) {
-                        console.log('bla', response);
                         model.categories = response.data;
                         model.categoryPage = model.categories.slice(0,model.categories.length < model.pageSize ? model.categories.length : model.pageSize);
-                        model.categoryPages = Math.floor(model.categories.length / model.pageSize);
+                        model.categoryPages = Math.ceil(model.categories.length / model.pageSize);
                         
                     }, 
                     function errorCallback(response) {
-                        console.log('bla2');
                         // called asynchronously if an error occurs
                         // or server returns response with an error status.
                     });

@@ -36,7 +36,6 @@ describe('login component tests', function() {
     httpBackend.whenPOST('/api/login').respond(200, {token: jwt_token});        
 
     var ctrl = $componentController('login',{$http: httpBackend, authentication: authentication, toaster: toaster, $rootRouter: rootRouter});    
-    console.log('ctrl', ctrl);
 
     ctrl.login();
     httpBackend.flush();
@@ -58,7 +57,6 @@ describe('login component tests', function() {
     httpBackend.whenPOST('/api/login').respond(200, {errorMessage: 'incorrect credentials'});        
 
     var ctrl = $componentController('login',{$http: httpBackend, authentication: authentication, toaster: toaster, $rootRouter: rootRouter});    
-    console.log('ctrl', ctrl);
 
     ctrl.login();
     httpBackend.flush();

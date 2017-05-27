@@ -25,12 +25,10 @@
                     }    
                 ).then(
                     function successCallback(response) {
-                        console.log('bla', response);
                         model.categories = response.data;
                                                
                     }, 
                     function errorCallback(response) {
-                        console.log('bla2');
                         // called asynchronously if an error occurs
                         // or server returns response with an error status.
                     });
