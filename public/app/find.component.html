@@ -69,7 +69,8 @@
         <tbody>    
             <tr ng-if="model.items.length" ng-repeat="item in model.items">
                 <td>
-                    {{item.itemName}}
+                    <a ng-if="model.isLoggedIn()  && model.isAdminUser()" ng-link="['Place']">{{item.itemName}}</a>
+                    <span ng-if="!model.isLoggedIn()  || !model.isAdminUser()">{{item.itemName}}</span>
                 </td>
                 <td>
                     {{item.itemDescription}}

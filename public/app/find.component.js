@@ -5,7 +5,7 @@
     module.component('find', {
         templateUrl: '/app/find.component.html',
         controllerAs: 'model',
-        controller: ['$http', function($http){
+        controller: ['$http', 'authentication', function($http, authentication){
         	var model = this;
 
             model.categories=[]
@@ -22,6 +22,25 @@
                 model.datePicker.opened = true;
             }; 
 
+            model.isLoggedIn = function(){
+                if (authentication.isLoggedIn()){
+                    return true;
+                }else{
+                    return false;
+                }
+            };
+            model.getLoggedInUser = function(){
+                return authentication.currentUser();
+            };
+            
+            model.isAdminUser = function(){
+                var loggedInUser = this.getLoggedInUser();
+                if(loggedInUser != null && loggedInUser.admin ==true){
+                    return true;
+                }else{
+                    return false;
+                }
+            };
         	model.searchModel = {
         		itemName:null,
                 itemCategory:null,
