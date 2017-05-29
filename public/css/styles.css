@@ -9,6 +9,9 @@ body{
     background: transparent;
     color:white;
 }
+.table{
+  background-color:  rgba(24, 24, 24, 0.78);
+}
 .well{
     background-color: rgba(34, 34, 34, 0.46);
 }

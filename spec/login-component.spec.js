@@ -56,7 +56,7 @@ describe('login component tests', function() {
 
     httpBackend.whenPOST('/api/login').respond(200, {errorMessage: 'incorrect credentials'});        
 
-    var ctrl = $componentController('login',{$http: httpBackend, authentication: authentication, toaster: toaster, $rootRouter: rootRouter});    
+    var ctrl = $componentController('login');    
 
     ctrl.login();
     httpBackend.flush();

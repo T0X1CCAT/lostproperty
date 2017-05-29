@@ -58,7 +58,6 @@
             payload = token.split('.')[1];
             payload = $window.atob(payload);
             payload = JSON.parse(payload);
-            console.log('payload', payload);
             return payload.exp > Date.now() / 1000;
         } else {
             return false;
