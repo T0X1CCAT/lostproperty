@@ -1,3 +1,4 @@
+<toaster-container toaster-options="{'close-button':false, 'time-out':{ 'toast-warning': 2000, 'toast-error': 5000, 'toast-success': 5000 } }"></toaster-container>
 <div class="well well-lg">
     <p>
             <h3>Find an item</h3>
@@ -69,11 +70,11 @@
         <tbody>    
             <tr ng-if="model.items.length" ng-repeat="item in model.items">
                 <td>
-                    <a ng-if="model.isLoggedIn()  && model.isAdminUser()" ng-link="['Place']">{{item.itemName}}</a>
-                    <span ng-if="!model.isLoggedIn()  || !model.isAdminUser()">{{item.itemName}}</span>
+                    <a  ng-if="model.isLoggedIn()  && model.isAdminUser()" ng-link="['EditPlace', {id: item._id}]"><span ng-class="{'glyphicon glyphicon-ok found':item.located}"></span>{{item.itemName}}</a>
+                    <span  ng-if="!model.isLoggedIn()  || !model.isAdminUser()"><span ng-class="{'glyphicon glyphicon-ok found':item.located}"></span>{{item.itemName}}</span>
                 </td>
                 <td>
-                    {{item.itemDescription}}
+                    {{item.itemDescription}} {{item.located}}
                 </td>
                 <td>
                     {{item.itemDate | date : 'dd/MM/yyyy'}}

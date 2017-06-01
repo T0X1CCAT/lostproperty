@@ -9,6 +9,15 @@ body{
     background: transparent;
     color:white;
 }
+.located{
+  background-color: rgba(35, 230, 35, 0.56);
+  display: inline-block;
+  border-radius: 7px;
+  padding: 3px;
+}
+.found{
+  color:#0adb0a;
+}
 .table{
   background-color:  rgba(24, 24, 24, 0.78);
 }

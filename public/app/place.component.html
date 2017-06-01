@@ -1,7 +1,8 @@
 
+<toaster-container toaster-options="{'close-button':false, 'time-out':{ 'toast-warning': 2000, 'toast-error': 5000, 'toast-success': 5000 } }"></toaster-container>
 <div class="well well-lg">
     <p>
-            <h3>Create a new lost item</h3>
+            <h3 ng-if="!model._id">Create a new lost item</h3><h3 ng-if="model._id">Edit an item <span ng-if="model.located===true" class="located">FOUND</span></h3>
     </p>    
     <form  ng-submit="placeItemForm.$valid && model.saveItem()" class="form-horizontal" novalidate name="placeItemForm">
         <div class="row">
@@ -122,9 +123,17 @@
                 </div>    
             </div>
         </div>
+        <script type="text/ng-template" id="confirmDeleteTmpl.html">
+            <div>
+                Do you wish to delete this item ? <button type="button" ng-click="model.deleteItemConfirmed()" class="btn btn-error">Yes</button>
+            </div>
+        </script>
         <div class="form-group">
             <div >
-            <button id="placeSubmit" type="submit" class="btn btn-primary">Save</button>
+            <button ng-if="!model._id" id="placeSubmit" type="submit" class="btn btn-primary">Save</button>
+            <button ng-if="model._id" id="updateItem" type="button" ng-click="model.updateItem()" class="btn btn-primary">Update</button>
+            <button ng-if="model._id" id="deleteSubmit" type="button" ng-click="model.deleteItem()" class="btn btn-danger">Delete</button>
+            <button ng-if="model._id && model.located===false" id="locatedSubmit" type="button" ng-click="model.itemLocated()" class="btn btn-success">Mark as Found</button>
             </div>
         </div>
     </form>
