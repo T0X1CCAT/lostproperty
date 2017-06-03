@@ -54,41 +54,43 @@
 
 
     </form> 
+    <div class="table-responsive">
+	    <table class="table table-striped">
+	        <thead>
+	            <tr>
+	                <th>Item Name</th>
+	           
+	                <th class="hidden-xs">Item Description</th>
+	                <th class="hidden-xs">Date Lost/Found</th>
+	                <th class="hidden-xs">Lost or Found</th>
+	                <th class="hidden-xs">Category</th>
+	            </tr>    
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Item Name</th>
-           
-                <th>Item Description</th>
-                <th>Date Lost/Found</th>
-                <th>Lost or Found</th>
-                <th>Category</th>
-            </tr>    
+	        </thead>
+	        <tbody>    
+	            <tr ng-if="model.items.length" ng-repeat="item in model.items">
+	                <td>
+	                    <a  ng-if="model.isLoggedIn()  && model.isAdminUser()" ng-link="['EditPlace', {id: item._id}]"><span ng-class="{'glyphicon glyphicon-ok found':item.located}"></span>{{item.itemName}}</a>
+	                    <span  ng-if="!model.isLoggedIn()  || !model.isAdminUser()"><span ng-class="{'glyphicon glyphicon-ok found':item.located}"></span>{{item.itemName}}</span>
+	                </td>
+	                <td class="hidden-xs">
+	                    {{item.itemDescription}} {{item.located}}
+	                </td>
+	                <td class="hidden-xs">
+	                    {{item.itemDate | date : 'dd/MM/yyyy'}}
+	                </td>
+	                <td class="hidden-xs">
+	                    {{item.itemLostOrFound}}
+	                </td>
+	                <td class="hidden-xs">
+	                    {{item.itemCategory.name}}
+	                </td>
 
-        </thead>
-        <tbody>    
-            <tr ng-if="model.items.length" ng-repeat="item in model.items">
-                <td>
-                    <a  ng-if="model.isLoggedIn()  && model.isAdminUser()" ng-link="['EditPlace', {id: item._id}]"><span ng-class="{'glyphicon glyphicon-ok found':item.located}"></span>{{item.itemName}}</a>
-                    <span  ng-if="!model.isLoggedIn()  || !model.isAdminUser()"><span ng-class="{'glyphicon glyphicon-ok found':item.located}"></span>{{item.itemName}}</span>
-                </td>
-                <td>
-                    {{item.itemDescription}} {{item.located}}
-                </td>
-                <td>
-                    {{item.itemDate | date : 'dd/MM/yyyy'}}
-                </td>
-                <td>
-                    {{item.itemLostOrFound}}
-                </td>
-                <td>
-                    {{item.itemCategory.name}}
-                </td>
+	            </tr>
+	        </tbody>             
+	    </table> 
 
-            </tr>
-            <tr ng-if="!model.items.length"> 
-            	<td colspan="5">No Results</td>
-            </tr>
-        </tbody>             
-    </table>       
+	</div>          
+    <div ng-if="!model.items.length"> 
+    	No Results
+    </div>
