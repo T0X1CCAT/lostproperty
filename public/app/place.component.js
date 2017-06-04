@@ -7,6 +7,10 @@
         controllerAs: 'model',
         controller: ['$http','toaster','authentication', function($http, toaster, authentication){
             var model = this;
+            model.showDeleteButton = false;
+            model.showFoundButton = false;
+            model.showUpdateButton = false;
+            model.showSaveButton=false;
 
             model.categories = [];
             
@@ -50,8 +54,11 @@
                         console.log('response', response.data);
                         if(response.data.status == 'ok'){
                             toaster.pop('success', "Result", 'Item has been deleted.');
-                            angular.element(document.getElementById('deleteSubmit')).remove();
-                            angular.element(document.getElementById('updateItem')).remove();
+                            //angular.element(document.getElementById('deleteSubmit')).remove();
+                            //angular.element(document.getElementById('updateItem')).remove();
+                            model.showFoundButton=false;
+                            model.showUpdateButton=false;
+                            model.showDeleteButton=false;
                         }
                        
                     }, 
@@ -74,7 +81,8 @@
                         console.log('response', response.data);
                         if(response.data.status == 'ok'){
                             toaster.pop('success', "Result", 'Item successfully marked as having been found.');
-                            angular.element(document.getElementById('locatedSubmit')).remove();
+                            //angular.element(document.getElementById('locatedSubmit')).remove();
+                            model.showFoundButton=false;
                             model.located = true;
                         }
                        
@@ -122,7 +130,11 @@
                         console.log('response', response.data);
                         if(response.data.status == 'ok'){
                             toaster.pop('success', "Result", 'Item Saved.');
-                            angular.element(document.getElementById('placeSubmit')).remove();
+                            //angular.element(document.getElementById('placeSubmit')).remove();
+                            model.showSaveButton=false;
+                            model.showFoundButton=true;
+                            model.showUpdateButton=true;
+                            model.showDeleteButton=true;
                         }
                        
                     }, 
@@ -163,11 +175,20 @@
                             model.itemTime = response.data.itemTime;
                             model.itemCategory = response.data.itemCategory;
                             model.located= response.data.located;
+                            model.showSaveButton=false;
+                            if(model.located==false){
+                                model.showFoundButton=true;    
+                            }
+                            
+                            model.showUpdateButton=true;
+                            model.showDeleteButton=true;
                         }, 
                         function errorCallback(response) {
                             // called asynchronously if an error occurs
                             // or server returns response with an error status.
                         });
+                }else{
+                     model.showSaveButton=true;
                 }
              
             }
