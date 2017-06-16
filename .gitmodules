@@ -1,0 +1,3 @@
+[submodule "server"]
+	path = server
+	url = https://github.com/T0X1CCAT/lostproperty_server
