@@ -2,6 +2,9 @@
   "name": "lostproperty",
   "version": "1.0.0",
   "description": "St Ignatius lost property app",
+  "engines": {
+    "node": "6.11.1"
+  },
   "main": "index.js",
   "directories": {
     "test": "test"
